@@ -1,38 +1,61 @@
-
 // Categories Load
 function loadCategories() {
-    fetch('https://openapi.programming-hero.com/api/phero-tube/categories')
-        .then(res => res.json())
-        .then(data => displayCategories(data.categories));
-};
+  fetch("https://openapi.programming-hero.com/api/phero-tube/categories")
+    .then((res) => res.json())
+    .then((data) => displayCategories(data.categories));
+}
 
 // video load
 function loadVideos() {
-    fetch('https://openapi.programming-hero.com/api/phero-tube/videos')
-        .then(res => res.json())
-        .then(data => displayVideos(data.videos));
-};
+  fetch("https://openapi.programming-hero.com/api/phero-tube/videos")
+    .then((res) => res.json())
+    .then((data) => displayVideos(data.videos));
+}
+
+// video category load
+function loadVideosByCategory(id) {
+  url = `https://openapi.programming-hero.com/api/phero-tube/category/${id}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      const clickedBtn = document.getElementById(`btn-${id}`);
+      clickedBtn.classList.add("active");
+      displayVideos(data.category);
+    });
+}
 
 // Display Categories
 function displayCategories(categories) {
-    // console.log(categories);
-    const categoryContainer = document.getElementById('categories-container');
-    categories.forEach(data => {
-        const categoriesDiv = document.createElement('div');
-        categoriesDiv.innerHTML = `
-        <button class="btn btn-sm hover:bg-[#ff617b] hover:text-white">${data.category}</button>
+  // console.log(categories);
+  const categoryContainer = document.getElementById("categories-container");
+  categories.forEach((data) => {
+    const categoriesDiv = document.createElement("div");
+    categoriesDiv.innerHTML = `
+        <button onclick="loadVideosByCategory(${data.category_id})" id="btn-${data.category_id}" class="btn btn-sm border-none  hover:bg-[#ff617b] hover:text-white">${data.category}</button>
         `;
-        categoryContainer.appendChild(categoriesDiv);
-    });
-};
+    categoryContainer.appendChild(categoriesDiv);
+  });
+}
 
 // Display Videos
 function displayVideos(videos) {
-    const videoContainer = document.getElementById('videos-container');
-    videos.forEach(data => {
-        const videoDiv = document.createElement('div');
-        videoDiv.innerHTML = `
-                <div class="card bg-base-100">
+  const videoContainer = document.getElementById("videos-container");
+
+  videoContainer.innerHTML = "";
+
+  if (videos.length === 0) {
+    videoContainer.innerHTML = `
+        <div class="flex flex-col items-center justify-center gap-8 col-span-full py-40">
+            <img src="./assets/img/Icon.png" alt="">
+            <h2 class="font-bold text-4xl text-center">Oops!! Sorry, There is no <br> content here</h2>
+        </div>`;
+    return;
+  }
+
+  videos.forEach((data) => {
+    const videoDiv = document.createElement("div");
+    videoDiv.innerHTML = `
+        <div class="card bg-base-100">
             <figure class="relative">
               <img class="w-full h-48 object-cover"
                 src="${data.thumbnail}"
@@ -54,10 +77,8 @@ function displayVideos(videos) {
                     <span class="text-sm text-[#171717]/70">${data.others.views} views</span>
                 </div>
             </div>
-          </div>
-        `;
-        videoContainer.appendChild(videoDiv);
-    });
-};
+        </div>`;
+    videoContainer.appendChild(videoDiv);
+  });
+}
 loadCategories();
-loadVideos();
