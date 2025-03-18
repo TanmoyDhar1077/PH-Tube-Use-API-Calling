@@ -16,7 +16,14 @@ PH Tube is a simple web application that allows users to browse and view video c
 * CSS3 (Tailwind CSS, DaisyUI)
 * JavaScript (ES6+)
 * Fetch API
-## Project Structure
+## Live Demo
+image
+[Live Demo](https://tanmoydhar1077.github.io/PH-Tube-Use-API-Calling/)
+## Screenshots
+![Logo](./assets/img/Logo.png)
+![Home](./assets/img/home.png)
+![Video Content](./assets/img/Videos.png)
+![Cart](./assets/img/Card.png)
 
 ## Project Structure
 ```
