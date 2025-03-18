@@ -50,46 +50,46 @@ cd ph-tube
 
 #### Get all videos
 
-```http
+```
   https://openapi.programming-hero.com/api/phero-tube/videos
 ```
 
 #### Get Categories
 
-```http
+```
   https://openapi.programming-hero.com/api/phero-tube/categories
 ```
 
 ### Get Video based on Catagory [ params ]
 
  **Endpoint :** 
-```http
-     https://openapi.programming-hero.com/api/phero-tube/category/categoryId
+```
+    https://openapi.programming-hero.com/api/phero-tube/category/categoryId
 ```
 **Example :**
-```http
+```
   https://openapi.programming-hero.com/api/phero-tube/category/1001
 ```
 
 ### Get Video based on Title [ Query ]
 
 **Endpoint :** 
-```http
+```
 https://openapi.programming-hero.com/api/phero-tube/videos?title=videoTitle
 ```
 **Example :**
-```http
+```
 https://openapi.programming-hero.com/api/phero-tube/videos?title=shape
 ```
 
 ### Get Video Details by video_id [ Query ]
 
 **Endpoint :** 
-```http
+```
 https://openapi.programming-hero.com/api/phero-tube/video/video_id
 ```
 **Example :** 
-```http
+```
 https://openapi.programming-hero.com/api/phero-tube/video/aaac
 ```
 
