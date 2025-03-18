@@ -39,13 +39,34 @@ function loadVideosByCategory(id) {
 
 // video details load
 function loadVideoDetails(id) {
-  console.log(id);
+  // console.log(id);
   url = `https://openapi.programming-hero.com/api/phero-tube/video/${id}`;
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data)
+      displayVideoDetails(data.video);
     });
+}
+
+// Display Video Details
+function displayVideoDetails(video) {
+  console.log(video);
+  document.getElementById("video_details").showModal();
+  const detailsContainer = document.getElementById("details-container");
+  detailsContainer.innerHTML = `
+<div class="card bg-base-100 w-full shadow-sm">
+  <figure class="px-10 pt-10">
+    <img
+      src="${video.thumbnail}"
+      alt="Shoes"
+      class="rounded-xl" />
+  </figure>
+  <div class="card-body items-center text-center">
+    <h2 class="card-title">${video.title}</h2>
+    <p>${video.description}</p>
+    <p class=" bg-slate-200 p-2 rounded-lg mt-4">Views ${video.others.views}</p>
+  </div>
+</div>`;
 }
 
 // Display Categories
@@ -96,7 +117,7 @@ function displayVideos(videos) {
                     <h2 class="text-base font-bold">${data.title}</h2>
                     <div class="flex items-center gap-2">
                         <span class="text-sm text-[#171717]/70">${data.authors[0].profile_name}</span>
-                        <img src="./assets/img/verified.png" alt="" class="w-4 h-4">
+                        <span>${data.authors[0].verified == true ? `<img src="./assets/img/verified.png" alt="icon" class="w-5 h-5">`: ``}</span>
                     </div>
                     <span class="text-sm text-[#171717]/70">${data.others.views} views</span>
                 </div>
