@@ -31,7 +31,7 @@ PH Tube/
 ## Installation
 
 * Clone the repository: 
-```http
+```bash
 https://github.com/TanmoyDhar1077/PH-Tube-Use-API-Calling.git
 ```
 * Navigate to the project directory: 
