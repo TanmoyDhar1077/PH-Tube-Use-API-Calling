@@ -111,6 +111,3 @@ https://openapi.programming-hero.com/api/phero-tube/video/aaac
 * Push to the branch
 * Open a pull request
 
-## License
-
-This project is licensed under the MIT License.
